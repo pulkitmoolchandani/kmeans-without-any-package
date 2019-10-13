@@ -1,0 +1,52 @@
+import numpy as np
+import pandas as pd
+data = [(1,3),(8,7),(3,5),(6,9),(1,8),(9,4),(6,7),(5,9),(3,4),(8,5)]
+c1x=data[0][0]
+c1y=data[0][1]
+c2x=data[9][0]
+c2y=data[9][1]
+c1bx=0
+c1by=0
+c2bx=0
+c2by=0
+l1=[]
+l2=[]
+while((c1x!=c1bx) or(c1y!=c1by) or (c2x!=c2bx) or (c2y!=c2by)):
+    l1=[]
+    l2=[]
+    if(c1bx!=0):
+        c1x=c1bx
+        c1y=c1by
+        c2x=c2bx
+        c2y=c2by
+    print('centroid 1',c1x,c1y)
+    print('centroid 2',c2x,c2y)
+    c1bx=0
+    c1by=0
+    c2bx=0
+    c2by=0
+    for i in range(len(data)):
+        #print(c1x,c1y,c2x,c2y)
+        print('co-ordinates',data[i])
+        print('sq. distance from 1',(c1x-data[i][0])**2+(c1y-data[i][1])**2)
+        print('sq. distance from 2',(c2x-data[i][0])**2+(c2y-data[i][1])**2)
+        if(((c1x-data[i][0])**2+(c1y-data[i][1])**2)>((c2x-data[i][0])**2+(c2y-data[i][1])**2)):
+            l2.append(data[i])
+        else:
+            l1.append(data[i])
+    for i in range(len(l1)):
+        c1bx+=l1[i][0]
+        c1by+=l1[i][1]
+    #print(c1bx)
+    for i in range(len(l2)):
+        c2bx+=l2[i][0]
+        c2by+=l2[i][1]
+    #print(c2by)
+    c1bx=c1bx/len(l1)
+    c1by=c1by/len(l1)
+    c2bx=c2bx/len(l2)
+    c2by=c2by/len(l2)
+    print(l1)
+    print(l2)
+    
+            
